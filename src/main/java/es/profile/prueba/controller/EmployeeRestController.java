@@ -31,7 +31,12 @@ public class EmployeeRestController {
 
 	@GetMapping("/api/employees/{employeeId}")
 	public Employee getEmployee(@PathVariable(name = "employeeId") Long employeeId) {
-		return employeeService.getEmployee(employeeId);
+		return employeeService.getEmployee(employeeId);		
+	}
+	
+	@GetMapping("/api/employees/salary/{salary}")
+	public List<Employee> getEmployees(@PathVariable(name = "salary") Integer salary) {
+		return employeeService.buscaEmployeePorSalario(salary);
 	}
 
 	@PostMapping("/api/employees")

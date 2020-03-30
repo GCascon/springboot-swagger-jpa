@@ -2,12 +2,17 @@ package es.profile.prueba.service;
 
 import java.util.List;
 import java.util.Optional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import es.profile.prueba.model.Employee;
 import es.profile.prueba.repository.EmployeeRepository;
-
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -27,7 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		  Optional<Employee> optEmp = employeeRepository.findById(employeeId);
 		  return optEmp.get();
 	}
-
+		
 	public void saveEmployee(Employee employee) {
 		employeeRepository.save(employee);
 	}
@@ -39,4 +44,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void updateEmployee(Employee employee) {
 		employeeRepository.save(employee);
 	}
+	
+	public List<Employee> buscaEmployeePorSalario(Integer salario) {
+		return employeeRepository.buscaEmployeePorSalario(salario);
+	}
+	
+	
+
 }
